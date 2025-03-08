@@ -87,7 +87,7 @@
                 const gifs = files.filter(file => file.name.endsWith('.gif'));
 
                 // Ordenar los GIFs por nombre (de más antiguo a más reciente)
-                gifs.sort((a, b) => a.name.localeCompare(b.name));
+                gifs.sort((a, b) => new Date(a.name) - new Date(b.name));
 
                 // Mostrar los GIFs ordenados
                 gifs.forEach(file => {
