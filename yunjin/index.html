@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> huh yunjin gif pack.</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #fff; /* Color de fondo */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Encabezado */
+        #header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        #header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        #header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 100;
+            word-spacing: 5px;
+            position: relative;
+            width: 390px; /* Establece el ancho */
+            margin: 0 auto; /* Centra horizontalmente */
+        }
+
+        /* Contenedor de los GIFs */
+        #gifcontainer {
+            width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho de la pantalla */
+            margin: 0; /* Elimina los márgenes */
+            padding: 0; /* Elimina el relleno */
+            box-sizing: border-box; /* Asegura que el relleno no afecte el ancho total */
+            text-align: justify; /* Alinea los GIFs de forma fluida */
+            line-height: 0; /* Elimina el espacio entre las filas */
+        }
+
+        .gif {
+            display: inline-block;
+            width: calc(100% / 7); /* 7 GIFs por fila */
+            height: auto;
+            margin: 0; /* Elimina el margen entre los GIFs */
+            padding: 0; /* Elimina el padding entre los GIFs */
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>ׅ ׄ  &nbsp;&nbsp;&nbsp;౿ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;yunjin gif pack   &nbsp;&nbsp;&nbsp; ׂ  &nbsp;&nbsp;&nbsp;  ִ  &nbsp;&nbsp;&nbsp;ദㅤ!</h1>
+        <h2>huh yunjin, le sserafim</h2>
+    </div>
+
+    <div id="gifcontainer"></div>
+
+    <script>
+        // URL del repositorio en GitHub
+        const repoURL = "https://api.github.com/repos/xtothemooon/yunjin/contents/";
+
+        // Contenedor donde se mostrarán los GIFs
+        const container = document.getElementById('gifcontainer');
+
+        // Obtener la lista de archivos desde el repositorio
+        fetch(repoURL)
+            .then(response => response.json())
+            .then(files => {
+                // Filtrar solo los GIFs
+                const gifs = files.filter(file => file.name.endsWith('.gif'));
+
+                // Ordenar los GIFs por nombre (de más reciente a más antiguo)
+                gifs.sort((a, b) => b.name.localeCompare(a.name));
+
+                // Mostrar los GIFs ordenados
+                gifs.forEach(file => {
+                    const img = document.createElement('img');
+                    img.src = file.download_url; // Usar la URL directa del archivo
+                    img.alt = file.name; // Texto alternativo
+                    img.classList.add('gif'); // Añadir la clase 'gif' para aplicar los estilos
+                    container.appendChild(img); // Agregar al contenedor
+                });
+            })
+            .catch(error => console.error('Error al cargar los GIFs:', error));
+    </script>
+</body>
+</html>
