@@ -64,14 +64,24 @@
     <div id="gifcontainer"></div>
 
     <script>
+
         // URL del repositorio en GitHub
         const repoURL = "https://api.github.com/repos/xtothemooon/yunjin/contents/";
+
+        //token
+        const token = github_pat_11BQH5OGQ0JL2gxRTGTbCR_An1p6aoXZ5sFlFVBqUOu9XzFJmtKUOMN9sdT7yZgms5NLQTD3TKs7M8kZc;
 
         // Contenedor donde se mostrarán los GIFs
         const container = document.getElementById('gifcontainer');
 
-        // Obtener la lista de archivos desde el repositorio
-        fetch(repoURL)
+        // Configuración de los encabezados con autenticación
+        const headers = {
+            "Authorization": `token ${token}`,  // Aquí agregamos el token de autenticación
+            "Accept": "application/vnd.github.v3+json"  // Asegura que la respuesta esté en formato JSON
+        };
+
+        // Obtener la lista de archivos desde el repositorio con autenticación
+        fetch(repoURL, { headers: headers })
             .then(response => response.json())
             .then(files => {
                 // Filtrar solo los GIFs
