@@ -1,13 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> huh yunjin gif pack.</title>
+    <title>yunjin gif pack</title>
     <style>
         /* Estilos generales */
         body {
             font-family: "Arial", sans-serif;
-            background-color: #fff; /* Color de fondo */
+            background-color: #fff;
             margin: 0;
             padding: 0;
         }
@@ -32,58 +33,50 @@
             font-weight: 100;
             word-spacing: 5px;
             position: relative;
-            width: 390px; /* Establece el ancho */
-            margin: 0 auto; /* Centra horizontalmente */
+            width: 390px;
+            margin: 0 auto;
         }
 
         /* Contenedor de los GIFs */
         #gifcontainer {
-            width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho de la pantalla */
-            margin: 0; /* Elimina los márgenes */
-            padding: 0; /* Elimina el relleno */
-            box-sizing: border-box; /* Asegura que el relleno no afecte el ancho total */
-            text-align: justify; /* Alinea los GIFs de forma fluida */
-            line-height: 0; /* Elimina el espacio entre las filas */
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: justify;
+            line-height: 0;
         }
 
         .gif {
             display: inline-block;
             width: calc(100% / 7); /* 7 GIFs por fila */
             height: auto;
-            margin: 0; /* Elimina el margen entre los GIFs */
-            padding: 0; /* Elimina el padding entre los GIFs */
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
     <div id="header">
-        <h1>ׅ ׄ  &nbsp;&nbsp;&nbsp;౿ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;yunjin gif pack   &nbsp;&nbsp;&nbsp; ׂ  &nbsp;&nbsp;&nbsp;  ִ  &nbsp;&nbsp;&nbsp;ദㅤ!</h1>
-        <h2>huh yunjin, le sserafim</h2>
+        <h1>ׅ ׄ  &nbsp;&nbsp;&nbsp;౿ &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;felix gif pack   &nbsp;&nbsp;&nbsp; ׂ  &nbsp;&nbsp;&nbsp;  ִ  &nbsp;&nbsp;&nbsp;ദㅤ!</h1>
+        <h2>huh yunjin uwu uwu</h2>
     </div>
 
     <div id="gifcontainer"></div>
 
     <script>
-
-        // URL del repositorio en GitHub
-        const repoURL = "https://api.github.com/repos/xtothemoon/xtothemoon.github.io/yunjin/contents";
-
-        //token
-        const token = github_pat_11BQH5OGQ0JL2gxRTGTbCR_An1p6aoXZ5sFlFVBqUOu9XzFJmtKUOMN9sdT7yZgms5NLQTD3TKs7M8kZc;
+        // URL del repositorio en GitHub (con la carpeta 'yunjin')
+        const repoURL = "https://api.github.com/repos/xtothemoon/xtothemoon.github.io/contents/yunjin"; 
 
         // Contenedor donde se mostrarán los GIFs
         const container = document.getElementById('gifcontainer');
 
-        // Configuración de los encabezados con autenticación
-        const headers = {
-            "Authorization": `token ${token}`,  // Aquí agregamos el token de autenticación
-            "Accept": "application/vnd.github.v3+json"  // Asegura que la respuesta esté en formato JSON
-        };
-
-        // Obtener la lista de archivos desde el repositorio con autenticación
-        fetch(repoURL, { headers: headers })
+        // Obtener la lista de archivos desde el repositorio
+        fetch(repoURL)
             .then(response => response.json())
             .then(files => {
+                console.log(files); // Verifica los archivos que se están obteniendo
+
                 // Filtrar solo los GIFs
                 const gifs = files.filter(file => file.name.endsWith('.gif'));
 
